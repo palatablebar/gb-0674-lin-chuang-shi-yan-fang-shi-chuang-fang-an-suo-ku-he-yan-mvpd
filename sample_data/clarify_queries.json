@@ -1,0 +1,49 @@
+[
+  {
+    "id": "Q-101",
+    "record_id": "00001-V1",
+    "field": "at",
+    "kind": "key",
+    "status": "open",
+    "question": "病案记录显示 V1 采样为 10-12，请核实系统日期是否为录入错误？此项影响方案选版与访视窗。",
+    "replies": []
+  },
+  {
+    "id": "Q-102",
+    "record_id": "ORPHAN",
+    "field": "parent",
+    "kind": "key",
+    "status": "open",
+    "question": "复检记录引用 MISSING，请确认是否应引用 00020-V2，或该复检应作废。",
+    "replies": []
+  },
+  {
+    "id": "Q-103",
+    "record_id": "00020-V2",
+    "field": "value",
+    "kind": "key",
+    "status": "open",
+    "question": "00020 的 V2 访视无首次记录，请核实是否漏采或访视未发生。",
+    "replies": []
+  },
+  {
+    "id": "Q-104",
+    "record_id": "00002-V1",
+    "field": "remark",
+    "kind": "format",
+    "status": "open",
+    "question": "备注列需补检验单位说明，仅格式待办，不影响数值与窗口。",
+    "replies": []
+  },
+  {
+    "id": "Q-105",
+    "record_id": "00005-V1",
+    "field": "value",
+    "kind": "key",
+    "status": "closed",
+    "question": "检验值 120 mg/dL 与原始报告是否一致？",
+    "replies": [
+      {"author": "CRA-07", "text": "已核对原始报告，数值一致，无需更正。"}
+    ]
+  }
+]

@@ -11,8 +11,9 @@
 | M3 访视排窗 | 执行并复核访视排窗 | `POST /api/windows` | `app/modules/windows/rules.py` | `tests/test_windows.py` |
 | M4 偏离复核 | 执行并复核偏离复核 | `POST /api/deviation` | `app/modules/deviation/rules.py` | `tests/test_deviation.py` |
 | M5 复检裁决 | 执行并复核复检裁决 | `POST /api/retest` | `app/modules/retest/rules.py` | `tests/test_retest.py` |
-| M6 锁库检查 | 执行并复核锁库检查 | `POST /api/locking` | `app/modules/locking/rules.py` | `tests/test_locking.py` |
-| M7 冻结归档 | 执行并复核冻结归档 | `POST /api/archive` | `app/modules/archive/rules.py` | `tests/test_archive.py` |
+| M6 澄清裁决 | 执行并复核澄清裁决 | `POST /api/clarify` | `app/modules/clarify/rules.py` | `tests/test_clarify.py` |
+| M7 锁库检查 | 执行并复核锁库检查 | `POST /api/locking` | `app/modules/locking/rules.py` | `tests/test_locking.py` |
+| M8 冻结归档 | 执行并复核冻结归档 | `POST /api/archive` | `app/modules/archive/rules.py` | `tests/test_archive.py` |
 
 ## 陷阱登记
 
@@ -29,6 +30,11 @@
 | TRAP-15 | 检验单位换算 | 静默错算或证据丢失 | 以可复核规则显式处理 | `app/modules/protocol/rules.py` | `tests/test_protocol.py::test_unit_conversion_real` |
 | TRAP-23 | 访视窗末端 | 静默错算或证据丢失 | 以可复核规则显式处理 | `app/modules/windows/rules.py` | `tests/test_windows.py::test_half_open_end` |
 | TRAP-11 | UTC日历归一 | 静默错算或证据丢失 | 以可复核规则显式处理 | `app/modules/windows/rules.py` | `tests/test_windows.py::test_utc_day_equivalence` |
+| TRAP-30 | 未关闭关键澄清混入冻结 | 未核实关键结果写进冻结结论 | 关键事实未关闭即阻断，格式待办随批冻结并标注 | `app/clarify.py` | `tests/test_clarify.py::test_open_key_blocks` |
+| TRAP-31 | 问题状态冲突 | 静默取一条状态 | 同编号内容冲突、已关闭无回复、目标缺失均阻断 | `app/clarify.py` | `tests/test_clarify.py::test_status_conflict_blocks` |
+| TRAP-32 | 关闭后旧结论沿用 | 旧版与新状态混用 | 旧结论作废并指向新批次，旧版保留可追溯 | `app/store.py` | `tests/test_clarify.py::test_closing_supersedes_old_conclusion` |
+| TRAP-33 | 同一回复重试 | 重复新增处理或分支批次 | 回复按作者+正文去重，摘要与批号不变 | `app/clarify.py` | `tests/test_clarify.py::test_reply_retry_is_idempotent` |
+| TRAP-34 | 原始提问与回复丢失 | 覆盖式更新 | 只追加，回复与提问随凭证导出 | `app/archive.py` | `tests/test_clarify.py::test_archive_bundle_carries_clarify` |
 
 ## 对账规则
 
